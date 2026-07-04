@@ -2,36 +2,15 @@ package com.javaproject;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import com.javaproject.beans.BoardGame;
-import com.javaproject.beans.Review;
-import com.javaproject.database.DatabaseAccess;
 
-@SpringBootTest
-@AutoConfigureMockMvc
-class TestDatabase {
-
-    private DatabaseAccess da;
-
-    @Autowired
-    public void setDatabase(DatabaseAccess da) {
-        this.da = da;
-    }
+class TestDatabase extends BaseDatabaseTest {
 
     @Test
     public void testDatabaseAddBoardGame() {
-        BoardGame boardGame = new BoardGame();
-        boardGame.setName("onecard");
-        boardGame.setLevel(1);
-        boardGame.setMinPlayers(2);
-        boardGame.setMaxPlayers("+");
-        boardGame.setGameType("Party Game");
+        BoardGame boardGame = newTestBoardGame();
 
         int originalSize = da.getBoardGames().size();
 
