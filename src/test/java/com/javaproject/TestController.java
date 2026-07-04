@@ -12,26 +12,15 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.util.LinkedMultiValueMap;
 
 import com.javaproject.beans.BoardGame;
 import com.javaproject.beans.Review;
-import com.javaproject.database.DatabaseAccess;
 
-@SpringBootTest
-@AutoConfigureMockMvc
-class TestController {
+class TestController extends BaseDatabaseTest {
 
-    private DatabaseAccess da;
     private MockMvc mockMvc;
-
-    @Autowired
-    public void setDatabase(DatabaseAccess da) {
-        this.da = da;
-    }
 
     @Autowired
     public void setMockMvc(MockMvc mockMvc) {
